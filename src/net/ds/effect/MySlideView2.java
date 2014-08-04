@@ -424,7 +424,7 @@ public class MySlideView2 extends ViewGroup {
     public boolean onTouchEvent(MotionEvent ev) {
         final int action = ev.getAction();
         
-        Log.d(TAG, "onTouchEvent, action = " + CommonUtils.getEventAction(ev));
+        Log.e(TAG, "onTouchEvent, action = " + CommonUtils.getEventAction(ev));
 
         if (getChildCount() <= 0) {
             return true;

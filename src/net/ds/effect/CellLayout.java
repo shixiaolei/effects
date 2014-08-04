@@ -36,20 +36,14 @@ public class CellLayout extends ViewGroup {
 
     public CellLayout(Context context) {
         super(context);
-
-        this.setClickable(true);
     }
 
     public CellLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        this.setClickable(true);
     }
 
     public CellLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
-        this.setClickable(true);
     }
 
     public void setDimension(int column, int row) {
