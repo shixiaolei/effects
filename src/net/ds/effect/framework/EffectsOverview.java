@@ -107,7 +107,15 @@ public class EffectsOverview extends android.widget.FrameLayout implements OnCli
     protected void onClickPreview(EffectInfo effectObject) {
         Intent intent = new Intent();
         intent.setClass(this.mContext, PreviewActivity.class);
-        intent.putExtra(PreviewActivity.SELECTED_EFFECT_KEY, effectObject.id);
+        int index = 0;
+        for (int i = 0; i < mEffectList.size(); i++) {
+            if (effectObject.id == mEffectList.get(i).id) {
+                index = i;
+                break;
+            }
+        }
+        
+        intent.putExtra(PreviewActivity.SELECTED_EFFECT_ID, index);
 
         this.mContext.startActivity(intent);
     }

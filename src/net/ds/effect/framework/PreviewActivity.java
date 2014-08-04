@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class PreviewActivity extends Activity {
     
-    public static final String SELECTED_EFFECT_KEY = "selected_effect_key";
+    public static final String SELECTED_EFFECT_ID = "selected_effect_key";
     private static final int MAX_SCREEN_SIZE = 3;
     private static final int ROW_COUNT = 4;
     private static final int COLUMN_COUNT = 4;
@@ -26,7 +26,7 @@ public class PreviewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview);
         mSlideView = (EffectSlideView) findViewById(R.id.slide_view);
-        mCurrentEffect = this.getIntent().getIntExtra(SELECTED_EFFECT_KEY, -1);
+        mCurrentEffect = this.getIntent().getIntExtra(SELECTED_EFFECT_ID, -1);
         mSlideView.setCurrentEffect(mCurrentEffect);
         initIcons();
     }
