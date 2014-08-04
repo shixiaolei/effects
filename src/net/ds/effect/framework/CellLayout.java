@@ -1,4 +1,4 @@
-package net.ds.effect;
+package net.ds.effect.framework;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -23,8 +23,6 @@ public class CellLayout extends ViewGroup {
     private int mRow = 4;
 
     private int mRowDividerId;
-
-    private int mStretchMode;
 
     private boolean mPortrait;
 
@@ -58,12 +56,24 @@ public class CellLayout extends ViewGroup {
         mRowDividerId = id;
     }
 
-    public void setStretchMode(int mode) {
-        mStretchMode = mode;
-    }
-
     public void setPortrait(boolean flag) {
         mPortrait = flag;
+    }
+    
+    public int getCountX() {
+        return mColumn;
+    }
+
+    public int getCountY() {
+        return mRow;
+    }
+    
+    public int getCellLongAxisDistance() {
+        return mCellHeight;
+    }
+
+    public int getCellShortAxisDistance() {
+        return mCellWidth;
     }
 
     public void setStartPadding(int longStart, int longEnd, int shortStart, int shortEnd) {
@@ -72,6 +82,9 @@ public class CellLayout extends ViewGroup {
         mShortAxisStartPadding = shortStart;
         mShortAxisEndPadding = shortEnd;
     }
+    
+    private int mCellWidth;
+    private int mCellHeight;
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -87,17 +100,13 @@ public class CellLayout extends ViewGroup {
             throw new RuntimeException("CellLayout cannot have UNSPECIFIED dimensions");
         }
 
-        if (mStretchMode == STRETCH_MODE_SPACING) {
-            measureChildren(widthMeasureSpec, heightMeasureSpec);
-        } else {
-            int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(
-                    widthSpecSize / mColumn, widthSpecMode);
-            int childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(heightSpecSize
-                    / mRow, heightSpecMode);
-            final int childCount = getChildCount();
-            for (int i = 0; i < childCount; i++) {
-                getChildAt(i).measure(childWidthMeasureSpec, childHeightMeasureSpec);
-            }
+        mCellWidth = widthSpecSize / mColumn;
+        mCellHeight = heightSpecSize / mRow;
+        int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(mCellWidth, widthSpecMode);
+        int childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(mCellHeight, heightSpecMode);
+        final int childCount = getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            getChildAt(i).measure(childWidthMeasureSpec, childHeightMeasureSpec);
         }
     }
 

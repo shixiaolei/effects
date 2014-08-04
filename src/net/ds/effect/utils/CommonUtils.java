@@ -1,6 +1,7 @@
-package net.ds.effect;
+package net.ds.effect.utils;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import android.os.Build;
@@ -31,6 +32,45 @@ public class CommonUtils {
             return field.get(object);
         } finally {
             field.setAccessible(accessible);
+        }
+    }
+    
+    public static <T> T forceInvoke(Object object, String methodName, Class<?>[] argsClasses, Object[] args) throws InvocationTargetException {
+        Method method = null;
+        Class<?> clazz = object.getClass();
+        Exception innerException = null;
+        while (clazz != null) {
+            try {
+                method = clazz.getDeclaredMethod(methodName, argsClasses);
+            } catch (Exception e) {
+                innerException = e;
+            }
+            if (method != null) {
+                break;
+            } else {
+                clazz = clazz.getSuperclass();
+            }
+        }
+
+        if (method == null) {
+            throw new InvocationTargetException(innerException);
+        }
+
+        boolean asscessiableChanged = false;
+        try {
+            if (!method.isAccessible()) {
+                method.setAccessible(true);
+                asscessiableChanged = true;
+            }
+            return (T) method.invoke(object, args);
+        } catch (IllegalArgumentException e) {
+            throw new InvocationTargetException(e);
+        } catch (IllegalAccessException e) {
+            throw new InvocationTargetException(e);
+        } finally {
+            if (asscessiableChanged && method.isAccessible()) {
+                method.setAccessible(false);
+            }
         }
     }
     

@@ -1,5 +1,5 @@
 
-package net.ds.effect;
+package net.ds.effect.utils;
 
 public class Constants {
     
@@ -12,4 +12,8 @@ public class Constants {
     public static final boolean LOGW_ENABLED = true;
 
     public static final boolean LOGD_ENABLED = true;
+    
+    public static final boolean RENDER_PERFORMANCE_MODE_PREFER_QUALITY = true;
+    
+    public static boolean sLauncherInTouching = true;
 }

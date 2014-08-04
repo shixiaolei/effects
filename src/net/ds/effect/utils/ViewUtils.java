@@ -1,6 +1,7 @@
 
-package net.ds.effect;
+package net.ds.effect.utils;
 
+import net.ds.effect.BuildConfig;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Handler;

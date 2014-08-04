@@ -1,6 +1,9 @@
 //package com.jfo.common;
-package net.ds.effect;
+package net.ds.effect.framework;
 
+import net.ds.effect.utils.CommonUtils;
+import net.ds.effect.utils.Constants;
+import net.ds.effect.utils.ViewUtils;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Canvas;

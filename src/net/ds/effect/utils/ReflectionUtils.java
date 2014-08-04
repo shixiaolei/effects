@@ -1,5 +1,5 @@
 
-package net.ds.effect;
+package net.ds.effect.utils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

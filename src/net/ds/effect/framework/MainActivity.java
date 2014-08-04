@@ -1,6 +1,8 @@
 
-package net.ds.effect;
+package net.ds.effect.framework;
 
+import net.ds.effect.R;
+import net.ds.effect.core.EffectSlideView;
 import android.app.Activity;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -35,6 +37,15 @@ public class MainActivity extends Activity {
                     drawable = new BitmapDrawable(this.getResources(), ((BitmapDrawable) drawable).getBitmap());
                     drawable.setBounds(0, 0, this.getResources().getDimensionPixelSize(R.dimen.app_icon_size), this.getResources().getDimensionPixelSize(R.dimen.app_icon_size));
                     textView.setCompoundDrawables(null, drawable, null, null);
+                    
+                    ItemInfo itemInfo = new ItemInfo();
+                    itemInfo.cellX = k;
+                    itemInfo.cellY = j;
+                    itemInfo.spanX = 1;
+                    itemInfo.spanY = 1;
+                    itemInfo.screen = i;
+                    textView.setTag(itemInfo);
+                    
                     cellLayout.addView(textView);
                 }
             }

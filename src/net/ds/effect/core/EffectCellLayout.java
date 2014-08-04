@@ -1,5 +1,6 @@
-package net.ds.effect;
+package net.ds.effect.core;
 
+import net.ds.effect.framework.CellLayout;
 import android.content.Context;
 import android.util.AttributeSet;
 
