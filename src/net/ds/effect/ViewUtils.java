@@ -1,5 +1,5 @@
 
-package com.qihoo360.launcher.support.v4.util;
+package net.ds.effect;
 
 import android.graphics.Paint;
 import android.os.Build;
@@ -8,7 +8,10 @@ import android.util.Log;
 import android.view.View;
 
 public class ViewUtils {
+    
     private final static Paint sPaint = new Paint();
+    private static final boolean LOGE_ENABLED = BuildConfig.DEBUG;
+    private static final String TAG = "ViewUtils";
 
     /**
      * 是否硬件加速
@@ -98,7 +101,7 @@ public class ViewUtils {
                 CommonUtils.invokeMethod(View.class, view, "destroyLayer", null);
             }
 
-            if (DEBUG) {
+            if (LOGE_ENABLED) {
                 Log.d(TAG, "After destroyHardwareLayer, mHardwareLayer = " + CommonUtils.invokeField(View.class, view, "mHardwareLayer"));
             }
         } catch (Throwable e) {
