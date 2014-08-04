@@ -356,14 +356,14 @@ public class MySlideView2 extends ViewGroup {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         boolean ret = super.dispatchTouchEvent(ev);
-        Log.d(TAG, "dispatchTouchEvent ev = " + CommonUtils.getEventAction(ev) + " -- " + ret);
+        Log.d(TOUCH_TAG, "dispatchTouchEvent ev = " + CommonUtils.getEventAction(ev) + " -- " + ret);
         return ret;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         boolean ret = super.onInterceptTouchEvent(ev);
-        Log.d(TAG, "onInterceptTouchEvent ev = " + CommonUtils.getEventAction(ev) + " -- " + ret);
+        Log.w(TOUCH_TAG, "onInterceptTouchEvent ev = " + CommonUtils.getEventAction(ev) + " -- " + ret);
         return ret;
     }
 
@@ -386,6 +386,7 @@ public class MySlideView2 extends ViewGroup {
 
     private static final int INVALID_POINTER = -1;
     private static final String TAG = Constants.TAG;
+    private static final String TOUCH_TAG = Constants.TOUCH_TAG;
     protected int mActivePointerId = INVALID_POINTER;
     protected int mMotionX;
     protected int mMotionY;
@@ -424,7 +425,7 @@ public class MySlideView2 extends ViewGroup {
     public boolean onTouchEvent(MotionEvent ev) {
         final int action = ev.getAction();
         
-        Log.e(TAG, "onTouchEvent, action = " + CommonUtils.getEventAction(ev));
+        Log.e(TOUCH_TAG, "onTouchEvent, action = " + CommonUtils.getEventAction(ev));
 
         if (getChildCount() <= 0) {
             return true;
