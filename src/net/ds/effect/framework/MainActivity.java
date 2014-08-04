@@ -2,6 +2,7 @@
 package net.ds.effect.framework;
 
 import net.ds.effect.R;
+import net.ds.effect.core.EffectCellLayout;
 import net.ds.effect.core.EffectSlideView;
 import android.app.Activity;
 import android.graphics.drawable.BitmapDrawable;
@@ -27,7 +28,7 @@ public class MainActivity extends Activity {
     
     private void initIcons() {
         for (int i = 0; i < MAX_SCREEN_SIZE; i++) {
-            CellLayout cellLayout = new CellLayout(this);
+            EffectCellLayout cellLayout = new EffectCellLayout(this);
             cellLayout.setDimension(COLUMN_COUNT, ROW_COUNT);
 
             for (int j = 0; j < COLUMN_COUNT; j++) {

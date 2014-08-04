@@ -1,6 +1,7 @@
 package net.ds.effect.core;
 
 import net.ds.effect.framework.MySlideView2;
+import net.ds.effect.utils.Constants;
 import net.ds.effect.utils.HardwareAccelerationUtils2;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -14,13 +15,13 @@ import android.widget.Scroller;
 
 public class EffectSlideView extends MySlideView2 {
 
-    public static final String TAG = ".theme.EffectSlideView";
+    public static final String TAG = Constants.TAG;
 
     private static final int AUTO_SCROLL_DURATION = 1500;
 
     protected Transformation mChildTransformation;
 
-    private int mCurrentEffectType = 1;
+    private int mCurrentEffectType = 9;
 
     private Scroller mScroller;
 
