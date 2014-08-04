@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import android.os.Build;
+import android.view.MotionEvent;
 
 public class CommonUtils {
     public static boolean isEnable() {
@@ -30,6 +31,21 @@ public class CommonUtils {
             return field.get(object);
         } finally {
             field.setAccessible(accessible);
+        }
+    }
+    
+    public static String getEventAction(MotionEvent e) {
+        int action = e.getAction();
+        if (action == MotionEvent.ACTION_DOWN) {
+            return "down";
+        } else if (action == MotionEvent.ACTION_MOVE) {
+            return "move";
+        } else if (action == MotionEvent.ACTION_UP) {
+            return "up";
+        } else if (action == MotionEvent.ACTION_CANCEL) {
+            return "cancel";
+        } else {
+            return String.valueOf(action);
         }
     }
 }

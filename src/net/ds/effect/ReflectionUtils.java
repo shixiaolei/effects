@@ -14,7 +14,7 @@ import android.util.Log;
  */
 public class ReflectionUtils {
 
-    private static final String TAG = "Launcher.ReflectionUtils";
+    private static final String TAG = Constants.TAG;
 
     public static Class<?> getClass(Object object, String className) {
         Class<?> cls = null;

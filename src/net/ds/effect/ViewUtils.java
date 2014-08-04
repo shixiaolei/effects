@@ -11,7 +11,7 @@ public class ViewUtils {
     
     private final static Paint sPaint = new Paint();
     private static final boolean LOGE_ENABLED = BuildConfig.DEBUG;
-    private static final String TAG = "ViewUtils";
+    private static final String TAG = Constants.TAG;
 
     /**
      * 是否硬件加速
